@@ -2,11 +2,11 @@
 
 [中文说明](README.zh-CN.md) | [日本語](README.ja-JP.md)
 
-PosePad is a Dalamud plugin for Final Fantasy XIV that turns commonly used poses, emotes, and expressions into a clean button panel for GPose, screenshots, performances, and roleplay workflows.
+PosePad is a Dalamud plugin for Final Fantasy XIV that turns commonly used poses such as standing pose 1, 2, 3 and sitting pose 1, 2, 3, along with emotes and expressions, into a clean button panel for GPose, screenshots, performances, and roleplay workflows. Many animation mods rely on these poses, and typing timeline IDs by hand every time is cumbersome, so PosePad is built to make that workflow fast and direct.
 
 ## Features
 
-- Common pose buttons for curated timeline-based poses
+- Common pose buttons for standing, sitting, lying, and other curated timeline-based poses
 - Emote tab loaded from in-game data
 - Expression tab separated from regular emotes
 - Favorites for emotes and expressions
