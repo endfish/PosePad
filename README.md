@@ -1,112 +1,66 @@
 # PosePad
 
-PosePad is a Dalamud plugin for quickly triggering common poses and emotes from a button panel instead of memorizing IDs.
+[中文说明](README.zh-CN.md) | [日本語](README.ja-JP.md)
 
-## V1 Scope
+PosePad is a Dalamud plugin for Final Fantasy XIV that turns commonly used poses, emotes, and expressions into a clean button panel for GPose, screenshots, performances, and roleplay workflows.
 
-V1 currently includes:
+## Features
 
-- A main window with tabs for common actions, emotes, and favorites
+- Common pose buttons for curated timeline-based poses
+- Emote tab loaded from in-game data
+- Expression tab separated from regular emotes
+- Favorites for emotes and expressions
 - Search and filtering
-- A recent actions panel showing the latest 15 entries
-- Local configuration for window state, favorites, recents, and UI language
-- Optional UI language selection: English, Chinese, Japanese
+- Recent emotes list
+- Cancel Action button to restore the actor to the default state
+- GPose-friendly UI with optional auto-open on entering GPose
+- English, Simplified Chinese, and Japanese UI
 
-V1 explicitly does **not** guarantee:
+## Commands
 
-- Automatic action-mod detection
-- Automatic Penumbra mod mapping
-- Any runtime dependency on Penumbra or Brio
+- `/posepad`
+- `/posspad`
 
-Penumbra and Brio were used only as public references for research and architecture direction. PosePad V1 runs without either plugin installed.
+## Scope
 
-## Current Technical Target
+Included in the current release:
 
-This repository is currently aligned to the working local development environment used on this machine:
+- Local pose and emote panel
+- Local configuration
+- GPose-safe timeline playback behavior
+
+Not included in the current release:
+
+- Automatic Penumbra mod detection
+- Automatic mod-to-pose mapping
+- Runtime dependency on Penumbra
+- Runtime dependency on Brio
+
+## Development
+
+Current local target:
 
 - `Dalamud.NET.Sdk 14.0.0`
-- Dalamud API 14
-- default hooks path: `$(AppData)\XIVLauncherCN\addon\Hooks\dev`
+- Dalamud API `14`
+- default dev hooks path: `$(AppData)\XIVLauncherCN\addon\Hooks\dev`
 
-This matches the user's current working Dalamud plugin setup.
-
-## Project Structure
-
-The project follows the standard Dalamud plugin layout and stays close to `SamplePlugin`:
-
-- `Plugin.cs`: plugin entrypoint, service wiring, command registration, window system
-- `PosePad.json`: plugin metadata template
-- `Configuration/`: plugin configuration and window state persistence
-- `Models/`: action models and execution result types
-- `Services/`: data loading, catalog building, execution services
-- `Windows/`: main UI, settings UI, window state tracking
-- `Integrations/Penumbra/`: optional integration extension point only
-- `Data/CommonActions.json`: structured source for common timeline-based actions
-
-## Local Development
-
-### Prerequisites
-
-- XIVLauncher and Dalamud installed
-- A working Dalamud dev environment
-- .NET SDK installed
-- If your Dalamud dev hooks are not under the default AppData path, set `DALAMUD_HOME`
-
-### Build
-
-If your hooks are in the default `XIVLauncherCN` AppData location, a normal build is enough:
+Build:
 
 ```powershell
 dotnet build
-```
-
-If your Dalamud installation lives in a custom location, set `DALAMUD_HOME` first:
-
-```powershell
-$env:DALAMUD_HOME='C:\Users\<YourUser>\AppData\Roaming\XIVLauncherCN\addon\Hooks\dev'
-dotnet build
-```
-
-Release build:
-
-```powershell
-$env:DALAMUD_HOME='C:\Users\<YourUser>\AppData\Roaming\XIVLauncherCN\addon\Hooks\dev'
 dotnet build -c Release
 ```
 
-## Loading in Dalamud Dev Plugin
-
-1. Open Dalamud settings with `/xlsettings`
-2. Go to `Experimental`
-3. Add the full path to [PosePad.dll](</d:/Work/FF14/Git/PosePad/bin/Debug/PosePad.dll>)
-4. Open `/xlplugins`
-5. Go to `Dev Tools > Installed Dev Plugins`
-6. Enable `PosePad`
-
-Once loaded, use:
+Release package output:
 
 ```text
-/posepad
+bin/Release/PosePad/latest.zip
 ```
 
-to open the main window.
+## Loading As A Dev Plugin
 
-## GPose Behavior
-
-PosePad keeps its UI visible in GPose by default.
-
-- This uses the public Dalamud UI builder GPose visibility flag
-- It does not require Brio integration
-- You can toggle it in the settings window
-
-## Notes About Actions
-
-- `Common Actions` are treated as timeline-based pose entries and are sourced from [docs/常用动作编号对应.md](</d:/Work/FF14/Git/PosePad/docs/常用动作编号对应.md>) through the structured `Data/CommonActions.json`
-- `Emotes` are read from game data at runtime
-- `Favorites` currently apply to emotes
-
-## Known Limits in V1
-
-- Common action names are currently curated from the provided document and not auto-localized
-- Emote naming follows available game data in the current client environment
-- Penumbra integration is a placeholder extension point only until a stable public changed-item mapping strategy is confirmed
+1. Open `/xlsettings`
+2. Go to `Experimental`
+3. Add the full path to `bin/Debug/PosePad.dll`
+4. Open `/xlplugins`
+5. Enable PosePad from the dev plugin list

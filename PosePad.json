@@ -2,7 +2,8 @@
   "Author": "Endfish",
   "Name": "PosePad",
   "Punchline": "Quick pose and emote buttons for gpose and performances.",
-  "Description": "Open a pose button panel with /posepad. Includes common timeline-based poses, emote browsing, favorites, search, and recent actions.",
+  "Description": "Open a pose button panel with /posepad. Includes common timeline-based poses, emotes, expressions, favorites, search, recent actions, and a cancel-action button.",
+  "RepoUrl": "https://github.com/endfish/PosePad",
   "ApplicableVersion": "any",
   "Tags": [
     "gpose",
