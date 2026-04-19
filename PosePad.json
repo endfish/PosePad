@@ -1,0 +1,14 @@
+{
+  "Author": "Endfish",
+  "Name": "PosePad",
+  "Punchline": "Quick pose and emote buttons for gpose and performances.",
+  "Description": "Open a pose button panel with /posepad. Includes common timeline-based poses, emote browsing, favorites, search, and recent actions.",
+  "ApplicableVersion": "any",
+  "Tags": [
+    "gpose",
+    "pose",
+    "emote",
+    "utility"
+  ],
+  "DalamudApiLevel": 14
+}
