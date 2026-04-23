@@ -54,6 +54,7 @@ public sealed class ConfigWindow : Window, IDisposable
         ImGui.Spacing();
         ImGui.Text(UiText.FavoriteCount(language, plugin.Configuration.FavoriteActionIds.Count));
         ImGui.Text(UiText.RecentCount(language, plugin.Configuration.RecentActionIds.Count));
+        ImGui.Text($"{UiText.PenumbraIntegration(language)}: {plugin.PenumbraIntegration.StatusMessage}");
         ImGui.Spacing();
 
         var disableGposeUiHide = plugin.Configuration.DisableGposeUiHide;

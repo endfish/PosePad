@@ -49,8 +49,9 @@ public sealed class Plugin : IDalamudPlugin
         var emoteActionRepository = new EmoteActionRepository(DataManager, Log);
         ActorResolverService = new ActorResolverService(ClientState, ObjectTable, TargetManager, Log);
         var timelinePlaybackService = new TimelinePlaybackService();
+        PenumbraIntegration = new PenumbraIpcIntegration(PluginInterface, Configuration, ObjectTable, Log, emoteActionRepository);
 
-        CatalogService = new ActionCatalogService(commonActionRepository, emoteActionRepository, Configuration);
+        CatalogService = new ActionCatalogService(commonActionRepository, emoteActionRepository, PenumbraIntegration, Configuration);
         ExecutionService = new ActionExecutionService(
             Configuration,
             CatalogService,
@@ -60,7 +61,6 @@ public sealed class Plugin : IDalamudPlugin
             new TimelineActionExecutor(Configuration, ActorResolverService, timelinePlaybackService, Log),
             ToastGui,
             Log);
-        PenumbraIntegration = new NullPenumbraIntegration();
 
         configWindow = new ConfigWindow(this);
         mainWindow = new MainWindow(this);
@@ -96,6 +96,8 @@ public sealed class Plugin : IDalamudPlugin
         WindowSystem.RemoveAllWindows();
         configWindow.Dispose();
         mainWindow.Dispose();
+        if (PenumbraIntegration is IDisposable disposableIntegration)
+            disposableIntegration.Dispose();
 
         CommandManager.RemoveHandler(CommandName);
         CommandManager.RemoveHandler(CommandAlias);

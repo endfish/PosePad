@@ -53,6 +53,14 @@ public static class UiText
             _ => "Favorites",
         };
 
+    public static string ModActions(UiLanguage language)
+        => language switch
+        {
+            UiLanguage.Chinese => "Mod 动作",
+            UiLanguage.Japanese => "Mod 動作",
+            _ => "Mod Actions",
+        };
+
     public static string Recent(UiLanguage language)
         => language switch
         {
@@ -171,6 +179,14 @@ public static class UiText
             UiLanguage.Chinese => $"最近使用：{count}",
             UiLanguage.Japanese => $"最近使用数: {count}",
             _ => $"Recent actions: {count}",
+        };
+
+    public static string PenumbraIntegration(UiLanguage language)
+        => language switch
+        {
+            UiLanguage.Chinese => "Penumbra 联动",
+            UiLanguage.Japanese => "Penumbra 連携",
+            _ => "Penumbra Integration",
         };
 
     public static string ClearRecent(UiLanguage language)
@@ -307,5 +323,61 @@ public static class UiText
             UiLanguage.Chinese => $"恢复 {targetName} 的默认动作失败。",
             UiLanguage.Japanese => $"{targetName} の既定動作の復元に失敗しました。",
             _ => $"Failed to restore the default action for {targetName}.",
+        };
+
+    public static string PenumbraWaiting(UiLanguage language)
+        => language switch
+        {
+            UiLanguage.Chinese => "正在等待 Penumbra 初始化。",
+            UiLanguage.Japanese => "Penumbra の初期化を待っています。",
+            _ => "Waiting for Penumbra to initialize.",
+        };
+
+    public static string PenumbraUnavailable(UiLanguage language)
+        => language switch
+        {
+            UiLanguage.Chinese => "未检测到可用的 Penumbra。",
+            UiLanguage.Japanese => "利用可能な Penumbra が見つかりません。",
+            _ => "Penumbra is not available.",
+        };
+
+    public static string PenumbraDisabled(UiLanguage language)
+        => language switch
+        {
+            UiLanguage.Chinese => "Penumbra 已安装，但当前处于关闭状态。",
+            UiLanguage.Japanese => "Penumbra は導入されていますが、現在は無効です。",
+            _ => "Penumbra is installed but currently disabled.",
+        };
+
+    public static string PenumbraCollectionUnavailable(UiLanguage language)
+        => language switch
+        {
+            UiLanguage.Chinese => "暂时无法解析当前角色的 Penumbra 集合。",
+            UiLanguage.Japanese => "現在のキャラクターに適用されている Penumbra コレクションを解決できません。",
+            _ => "Could not resolve the active Penumbra collection for the current character.",
+        };
+
+    public static string PenumbraDetectedModActions(UiLanguage language, int count, string collectionName)
+        => language switch
+        {
+            UiLanguage.Chinese => $"已从 {collectionName} 读取 {count} 个 Mod 动作。",
+            UiLanguage.Japanese => $"{collectionName} から {count} 件の Mod 動作を読み込みました。",
+            _ => $"Loaded {count} mod actions from {collectionName}.",
+        };
+
+    public static string PenumbraNoModActions(UiLanguage language, string collectionName)
+        => language switch
+        {
+            UiLanguage.Chinese => $"{collectionName} 当前没有已启用的 Mod 动作。",
+            UiLanguage.Japanese => $"{collectionName} には現在有効な Mod 動作がありません。",
+            _ => $"No enabled mod actions were found in {collectionName}.",
+        };
+
+    public static string PenumbraRefreshFailed(UiLanguage language)
+        => language switch
+        {
+            UiLanguage.Chinese => "读取 Penumbra Mod 动作失败。",
+            UiLanguage.Japanese => "Penumbra の Mod 動作を読み込めませんでした。",
+            _ => "Failed to read Penumbra mod actions.",
         };
 }

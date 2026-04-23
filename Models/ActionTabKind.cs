@@ -5,4 +5,5 @@ public enum ActionTabKind
     Common,
     Emote,
     Expression,
+    Mod,
 }

@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Penumbra.Api" Version="5.13.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Data\CommonActions.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Visible>false</Visible>

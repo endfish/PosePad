@@ -145,6 +145,12 @@ public sealed class MainWindow : Window, IDisposable
             ImGui.EndTabItem();
         }
 
+        if (ImGui.BeginTabItem(UiText.ModActions(language)))
+        {
+            DrawModActions(language);
+            ImGui.EndTabItem();
+        }
+
         ImGui.EndTabBar();
     }
 
@@ -153,6 +159,25 @@ public sealed class MainWindow : Window, IDisposable
         foreach (var group in plugin.CatalogService.GetCommonActions().GroupBy(action => ActionText.Group(language, action)))
         {
             if (ImGui.CollapsingHeader($"{group.Key}##{group.Key}", ImGuiTreeNodeFlags.DefaultOpen))
+            {
+                DrawActionGrid(group.ToList(), false, language);
+                ImGui.Spacing();
+            }
+        }
+    }
+
+    private void DrawModActions(UiLanguage language)
+    {
+        var actions = plugin.CatalogService.GetModActions();
+        if (actions.Count == 0)
+        {
+            ImGui.TextDisabled(plugin.PenumbraIntegration.StatusMessage);
+            return;
+        }
+
+        foreach (var group in actions.GroupBy(action => ActionText.Group(language, action)))
+        {
+            if (ImGui.CollapsingHeader($"{group.Key}##penumbra:{group.Key}", ImGuiTreeNodeFlags.DefaultOpen))
             {
                 DrawActionGrid(group.ToList(), false, language);
                 ImGui.Spacing();

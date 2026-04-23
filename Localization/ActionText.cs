@@ -17,6 +17,9 @@ public static class ActionText
         if (TryGetCommonPoseInfo(action.SourceId, out var category, out _))
             return CommonPoseGroup(language, category);
 
+        if (action.TabKind == ActionTabKind.Mod)
+            return action.GroupName;
+
         if (action.TabKind == ActionTabKind.Expression)
             return UiText.Expressions(language);
 
@@ -28,6 +31,7 @@ public static class ActionText
     public static string Detail(UiLanguage language, PoseActionEntry action)
         => action.ExecutionKind switch
         {
+            ActionExecutionKind.Emote when action.TabKind == ActionTabKind.Mod => EmoteDetail(language, action.SourceId),
             ActionExecutionKind.Timeline => TimelineDetail(language, action.SourceId),
             ActionExecutionKind.Emote => action.TabKind == ActionTabKind.Expression
                 ? ExpressionDetail(language, action.SourceId)

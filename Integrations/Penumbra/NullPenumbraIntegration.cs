@@ -6,4 +6,7 @@ public sealed class NullPenumbraIntegration : IPenumbraIntegration
 
     public string StatusMessage
         => "V1 does not include automatic Penumbra action-mod detection. This is an extension point only.";
+
+    public IReadOnlyList<Models.PoseActionEntry> GetModActions()
+        => [];
 }
