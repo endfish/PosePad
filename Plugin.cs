@@ -49,7 +49,7 @@ public sealed class Plugin : IDalamudPlugin
         var emoteActionRepository = new EmoteActionRepository(DataManager, Log);
         ActorResolverService = new ActorResolverService(ClientState, ObjectTable, TargetManager, Log);
         var timelinePlaybackService = new TimelinePlaybackService();
-        PenumbraIntegration = new PenumbraIpcIntegration(PluginInterface, Configuration, ObjectTable, Log, emoteActionRepository);
+        PenumbraIntegration = CreatePenumbraIntegration(emoteActionRepository);
 
         CatalogService = new ActionCatalogService(commonActionRepository, emoteActionRepository, PenumbraIntegration, Configuration);
         ExecutionService = new ActionExecutionService(
@@ -136,5 +136,18 @@ public sealed class Plugin : IDalamudPlugin
             OpenMainUi();
 
         lastIsGPosing = isGPosing;
+    }
+
+    private IPenumbraIntegration CreatePenumbraIntegration(EmoteActionRepository emoteActionRepository)
+    {
+        try
+        {
+            return new PenumbraIpcIntegration(PluginInterface, Configuration, ObjectTable, Log, emoteActionRepository);
+        }
+        catch (Exception ex)
+        {
+            Log.Warning(ex, "Failed to initialize Penumbra integration. Falling back to null integration.");
+            return new NullPenumbraIntegration();
+        }
     }
 }
