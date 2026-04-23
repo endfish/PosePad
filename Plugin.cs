@@ -49,7 +49,7 @@ public sealed class Plugin : IDalamudPlugin
         var emoteActionRepository = new EmoteActionRepository(DataManager, Log);
         ActorResolverService = new ActorResolverService(ClientState, ObjectTable, TargetManager, Log);
         var timelinePlaybackService = new TimelinePlaybackService();
-        PenumbraIntegration = CreatePenumbraIntegration(emoteActionRepository);
+        PenumbraIntegration = CreatePenumbraIntegration(commonActionRepository, emoteActionRepository);
 
         CatalogService = new ActionCatalogService(commonActionRepository, emoteActionRepository, PenumbraIntegration, Configuration);
         ExecutionService = new ActionExecutionService(
@@ -138,11 +138,19 @@ public sealed class Plugin : IDalamudPlugin
         lastIsGPosing = isGPosing;
     }
 
-    private IPenumbraIntegration CreatePenumbraIntegration(EmoteActionRepository emoteActionRepository)
+    private IPenumbraIntegration CreatePenumbraIntegration(
+        CommonActionRepository commonActionRepository,
+        EmoteActionRepository emoteActionRepository)
     {
         try
         {
-            return new PenumbraIpcIntegration(PluginInterface, Configuration, ObjectTable, Log, emoteActionRepository);
+            return new PenumbraIpcIntegration(
+                PluginInterface,
+                Configuration,
+                ObjectTable,
+                Log,
+                commonActionRepository,
+                emoteActionRepository);
         }
         catch (Exception ex)
         {
