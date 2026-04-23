@@ -1,14 +1,16 @@
 {
   "Author": "Endfish",
   "Name": "PosePad",
-  "Punchline": "Quick buttons for common mod-friendly poses, emotes, and expressions.",
-  "Description": "Open a pose button panel with /posepad. Includes common standing, sitting, lying, and other timeline-based poses alongside emotes, expressions, favorites, search, recent actions, and a cancel-action button for faster mod-assisted GPose workflows.",
+  "Punchline": "Quick pose, emote, expression, and Penumbra mod-action buttons.",
+  "Description": "Open a pose button panel with /posepad. Includes common standing, sitting, lying, and other timeline-based poses alongside emotes, expressions, favorites, search, recent actions, a cancel-action button, and optional Penumbra integration that reads active modded emotes into a Mod Actions tab for faster GPose workflows.",
   "RepoUrl": "https://github.com/endfish/PosePad",
+  "IconUrl": "https://raw.githubusercontent.com/endfish/PosePad/main/icon.png",
   "ApplicableVersion": "any",
   "Tags": [
     "gpose",
     "pose",
     "emote",
+    "penumbra",
     "utility"
   ],
   "DalamudApiLevel": 14
