@@ -40,8 +40,8 @@ Not included in the current release:
 
 Current local target:
 
-- `Dalamud.NET.Sdk 14.0.0`
-- Dalamud API `14`
+- `Dalamud.NET.Sdk 15.0.0`
+- Dalamud API `15`
 - default dev hooks path: `$(AppData)\XIVLauncherCN\addon\Hooks\dev`
 
 Build:

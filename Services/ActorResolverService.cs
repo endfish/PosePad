@@ -48,7 +48,7 @@ public sealed class ActorResolverService
             if (gameObject is not ICharacter character || !IsUsableCharacter(character))
                 continue;
 
-            if (!IsGPoseCharacter(character) || character.ObjectKind != ObjectKind.Player)
+            if (!IsGPoseCharacter(character) || character.ObjectKind != ObjectKind.Pc)
                 continue;
 
             if (!string.Equals(character.Name.TextValue, localName, StringComparison.Ordinal))

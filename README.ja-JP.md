@@ -40,8 +40,8 @@ PosePad は、Final Fantasy XIV 向けの Dalamud プラグインです。立ち
 
 現在のローカル開発基準：
 
-- `Dalamud.NET.Sdk 14.0.0`
-- Dalamud API `14`
+- `Dalamud.NET.Sdk 15.0.0`
+- Dalamud API `15`
 - 既定の hooks パス: `$(AppData)\XIVLauncherCN\addon\Hooks\dev`
 
 ビルド:

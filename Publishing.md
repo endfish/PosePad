@@ -94,7 +94,7 @@ Dalamud 插件通常有两种发布方式：
     "Description": "Quick pose and emote buttons for GPose, screenshots, and performances.",
     "ApplicableVersion": "any",
     "RepoUrl": "https://github.com/endfish/PosePad",
-    "DalamudApiLevel": 14,
+    "DalamudApiLevel": 15,
     "Punchline": "Quick pose and emote buttons for GPose and performances.",
     "IsHide": false,
     "IsTestingExclusive": false,
